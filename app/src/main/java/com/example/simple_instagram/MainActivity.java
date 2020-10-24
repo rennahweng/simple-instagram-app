@@ -15,6 +15,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.List;
 
@@ -37,10 +38,52 @@ public class MainActivity extends AppCompatActivity {
         btnSubmit = findViewById(R.id.btnSubmit);
 
         // get user's posts
-         queryPosts();
+        // queryPosts();
 
+        // Submit a post
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // get description, cannot be empty
+                String description = etDescription.getText().toString();
+                if (description.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Description cannot be empty!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                // get user after getting description
+                ParseUser currentUser = ParseUser.getCurrentUser();
+                savePost(description, currentUser);
+            }
+        });
     }
 
+    /**
+     * Save a new post to Parse database
+     * @param description
+     * @param currentUser
+     */
+    private void savePost(String description, ParseUser currentUser) {
+        Post post = new Post();
+        post.setDescription(description);
+        post.setUser(currentUser);
+//        post.setImage();
+
+        // save the post in Parse
+        post.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    // save post failed
+                    Log.e(TAG, "Error saving post...", e);
+                    return;
+                }
+                Log.i(TAG, "Saved new post successfully");
+
+                // reset post contents
+                etDescription.setText("");
+            }
+        });
+    }
 
     /**
      * Get all posts from query
