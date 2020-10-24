@@ -37,9 +37,10 @@ public class MainActivity extends AppCompatActivity {
     private Button btnCaptureImage;
     private ImageView ivPostImage;
     private Button btnSubmit;
+    private Button btnLogout;
     File photoFile;
     public String photoFileName = "photo.jpg";
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         ivPostImage = findViewById(R.id.ivPostImage);
         btnSubmit = findViewById(R.id.btnSubmit);
+        btnLogout = findViewById(R.id.btnLogout);
 
         // get user's posts
         // queryPosts();
@@ -79,6 +81,18 @@ public class MainActivity extends AppCompatActivity {
                 // get user after getting description and image contents
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 savePost(description, currentUser, photoFile);
+            }
+        });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ParseUser.logOut();
+                // go back to Login Activity
+                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(i);
+                // Ensure that user cannot go back to main activity once logged out
+                finish();
             }
         });
     }

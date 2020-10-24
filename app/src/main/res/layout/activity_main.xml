@@ -9,6 +9,14 @@
     android:layout_margin="16dp"
     tools:context=".MainActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:max="100" />
+
     <EditText
         android:id="@+id/etDescription"
         android:layout_width="match_parent"
@@ -36,5 +44,13 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="50dp"
+        android:text="Log out" />
 
 </LinearLayout>
