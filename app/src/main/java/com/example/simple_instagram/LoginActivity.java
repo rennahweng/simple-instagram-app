@@ -39,4 +39,26 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    private void loginUser(String username, String password) {
+        Log.i(TAG, "Attempting to login user " + username);
+
+        ParseUser.logInInBackground(username, password, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                if (e == null) {
+                    // login successfully
+                } else {
+                    Log.e(TAG, "Issue with login", e);
+                    return;
+                }
+                // Navigate to the main activity if the user has signed in properly
+                goMainActivity();
+            }
+        });
+    }
+
+    private void goMainActivity() {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
 }
