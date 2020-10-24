@@ -102,10 +102,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Click on logout to sign out of the current account
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ParseUser.logOut();
+                Toast.makeText(MainActivity.this, "Signed out success.", Toast.LENGTH_SHORT).show();
                 // go back to Login Activity
                 Intent i = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(i);
@@ -192,9 +194,11 @@ public class MainActivity extends AppCompatActivity {
                 if (e != null) {
                     // save post failed
                     Log.e(TAG, "Error saving post...", e);
+                    Toast.makeText(MainActivity.this, "Error saving new post!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Log.i(TAG, "Saved new post successfully");
+                Toast.makeText(MainActivity.this, "Posted!", Toast.LENGTH_SHORT).show();
 
                 // reset post contents
                 etDescription.setText("");
