@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -23,6 +24,12 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // check if user has signed in already, avoid login again if so
+        if (ParseUser.getCurrentUser() != null) {
+            // go directly to Main Activity (skip Login Activity)
+            goMainActivity();
+        }
 
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
@@ -49,10 +56,14 @@ public class LoginActivity extends AppCompatActivity {
                     // login successfully
                 } else {
                     Log.e(TAG, "Issue with login", e);
+                    
+                    // Login error handling
+                    Toast.makeText(LoginActivity.this, "Issue with Login!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 // Navigate to the main activity if the user has signed in properly
                 goMainActivity();
+                Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -60,5 +71,7 @@ public class LoginActivity extends AppCompatActivity {
     private void goMainActivity() {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
+        // Ensure that user cannot go back to login activity once signed in
+        finish();
     }
 }
