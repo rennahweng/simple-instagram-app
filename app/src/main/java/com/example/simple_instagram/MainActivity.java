@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -27,6 +28,8 @@ import com.parse.SaveCallback;
 
 import java.io.File;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView ivPostImage;
     private Button btnSubmit;
     private Button btnLogout;
+    ProgressBar pbLoading;
     File photoFile;
     public String photoFileName = "photo.jpg";
 
@@ -45,12 +49,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
+        /*
+         * Add instagram text logo to ActionBar
+         */
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.instagram_text_logo);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         etDescription = findViewById(R.id.etDescription);
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         ivPostImage = findViewById(R.id.ivPostImage);
         btnSubmit = findViewById(R.id.btnSubmit);
         btnLogout = findViewById(R.id.btnLogout);
+        pbLoading = findViewById(R.id.pbLoading);
 
         // get user's posts
         // queryPosts();
@@ -67,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // show progress bar while submitting post to parse
+                pbLoading.setVisibility(ProgressBar.VISIBLE);
+
                 // get description, cannot be empty
                 String description = etDescription.getText().toString();
                 if (description.isEmpty()) {
@@ -81,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
                 // get user after getting description and image contents
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 savePost(description, currentUser, photoFile);
+
+                // hide progress bar once complete
+                pbLoading.setVisibility(ProgressBar.INVISIBLE);
             }
         });
 

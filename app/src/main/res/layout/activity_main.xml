@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="16dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
     <ProgressBar
         android:id="@+id/progressBar1"
@@ -15,7 +16,8 @@
         android:layout_height="wrap_content"
         android:visibility="invisible"
         style="?android:attr/progressBarStyleHorizontal"
-        android:max="100" />
+        android:max="100"
+        />
 
     <EditText
         android:id="@+id/etDescription"
@@ -30,12 +32,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Take Picture"
+        android:textColor="@color/white"
+        android:background="@drawable/gradient_background"
         />
 
     <ImageView
         android:id="@+id/ivPostImage"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginTop="10dp"
         tools:srcCompat="@tools:sample/avatars[4]" />
 
     <Button
@@ -43,14 +48,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:background="@drawable/gradient_background"
         />
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="110dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="55dp"
         android:text="Log out" />
 
 </LinearLayout>

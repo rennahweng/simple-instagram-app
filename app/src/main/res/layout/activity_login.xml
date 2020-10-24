@@ -10,10 +10,10 @@
     android:background="@drawable/gradient_background">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ivLogo"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
         app:srcCompat="@drawable/instagram_icon"
         />
@@ -23,14 +23,14 @@
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:layout_marginTop="50dp"
+        android:layout_below="@+id/ivLogo"
+        android:layout_marginTop="40dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:hint="username"
         android:textColor="@color/white"
         android:backgroundTint="@color/white"
-        tools:text="username" />
+        />
 
     <EditText
         android:id="@+id/etPassword"
@@ -41,20 +41,20 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:hint="password"
-        android:backgroundTint="@color/white"
         android:inputType="textPassword"
+        android:backgroundTint="@color/white"
         android:textColor="@color/white"
-        tools:text="username" />
+        />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="45dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_alignBottom="@+id/etPassword"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="-50dp"
+        android:layout_marginBottom="-60dp"
         android:background="@color/blue"
         android:textStyle="bold"
         android:text="Log in"
@@ -63,11 +63,11 @@
     <Button
         android:id="@+id/btnSignup"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="45dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_alignBottom="@+id/btnLogin"
-        android:layout_marginBottom="-50dp"
+        android:layout_marginBottom="-60dp"
         android:layout_centerHorizontal="true"
         android:background="@color/green"
         android:textStyle="bold"
