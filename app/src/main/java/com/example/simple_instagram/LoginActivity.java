@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
          * Add instagram text logo to ActionBar
          */
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.drawable.ic_instagram_text_logo);
+        getSupportActionBar().setIcon(R.drawable.instagram_text_logo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         // check if user has signed in already, avoid login again if so

@@ -1,47 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
-    
+    tools:context=".LoginActivity"
+    android:background="@drawable/gradient_background">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/instagram_icon"
+        />
+
+
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:hint="username"
-        />
+        android:textColor="@color/white"
+        android:backgroundTint="@color/white"
+        tools:text="username" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
+        android:layout_below="@+id/etUsername"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:hint="password"
+        android:backgroundTint="@color/white"
         android:inputType="textPassword"
-        />
+        android:textColor="@color/white"
+        tools:text="username" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="35dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignBottom="@+id/etPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-50dp"
+        android:background="@color/blue"
+        android:textStyle="bold"
         android:text="Log in"
-        />
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/btnSignup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="35dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignBottom="@+id/btnLogin"
+        android:layout_marginBottom="-50dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/green"
+        android:textStyle="bold"
         android:text="Sign up"
-        />
+        android:textColor="@color/white"/>
 
-</LinearLayout>
+</RelativeLayout>
