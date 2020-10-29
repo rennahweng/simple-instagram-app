@@ -32,4 +32,9 @@ dependencies {
 
     // Install Parse
     implementation "com.github.parse-community.Parse-SDK-Android:parse:1.18.5"
+
+    // Design Support Library (for Bottom Navigation View, or Fragments)
+    implementation "androidx.appcompat:appcompat:${appCompatVersion}"
+    //noinspection GradleDependency
+    implementation "com.google.android.material:material:${designSupportVersion}"
 }
