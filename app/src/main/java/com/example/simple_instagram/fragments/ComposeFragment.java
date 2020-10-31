@@ -80,9 +80,6 @@ public class ComposeFragment extends Fragment {
         btnLogout = view.findViewById(R.id.btnLogout);
         pbLoading = view.findViewById(R.id.pbLoading);
 
-        // get user's posts
-        // queryPosts();
-
         // Click on Capture Image button to bring up a camera view
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,34 +213,6 @@ public class ComposeFragment extends Fragment {
                 // reset post contents
                 etDescription.setText("");
                 ivPostImage.setImageResource(0);
-            }
-        });
-    }
-
-    /**
-     * Get all posts from query
-     */
-    private void queryPosts() {
-        // Specify which class to query
-        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-
-        query.include(Post.KEY_USER);
-
-        // Specify the object id
-        query.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> posts, ParseException e) {
-                if (e != null) {
-                    // query posts failed
-                    Log.e(TAG, "Issue with getting posts!", e);
-                    return;
-                }
-                // query posts successfully
-                Log.i(TAG, "Get posts successfully!");
-                for (Post post : posts) {
-                    Log.i(TAG, "Post: " + post.getDescription()
-                            + ", username: " + post.getUser().getUsername());
-                }
             }
         });
     }
