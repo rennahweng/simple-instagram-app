@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.example.simple_instagram.fragments.ComposeFragment;
 import com.example.simple_instagram.fragments.PostsFragment;
+import com.example.simple_instagram.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Objects;
@@ -23,8 +24,9 @@ public class MainActivity extends AppCompatActivity {
      */
     final FragmentManager fragmentManager = getSupportFragmentManager();
     // define your fragments here
-    final Fragment composeFragment = new ComposeFragment();
-    final Fragment postsFragment = new PostsFragment();
+//    final Fragment composeFragment = new ComposeFragment();
+//    final Fragment postsFragment = new PostsFragment();
+//    final Fragment profileFragment = new ProfileFragment();
 
     private BottomNavigationView bottomNavigationView;
 
@@ -58,9 +60,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_profile:
                     default:
-                        // TODO: change fragment
                         // Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
-                        fragment = new ComposeFragment();
+                        fragment = new ProfileFragment();
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
